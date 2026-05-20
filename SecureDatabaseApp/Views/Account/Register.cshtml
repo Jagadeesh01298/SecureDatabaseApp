@@ -1,0 +1,62 @@
+﻿@model SecureDatabaseApp.ViewModels.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Secure User Registration";
+}
+
+<h2>Secure User Registration</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div style="color: green; font-weight: bold;">
+        @TempData["Success"]
+    </div>
+}
+
+<form asp-action="Register" method="post">
+    @Html.AntiForgeryToken()
+
+    <div>
+        <label>Full Name</label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" style="color:red"></span>
+    </div>
+
+    <br />
+
+    <div>
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" style="color:red"></span>
+    </div>
+
+    <br />
+
+    <div>
+        <label>Password</label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" style="color:red"></span>
+    </div>
+
+    <br />
+
+    <div>
+        <label>Financial Information</label>
+        <input asp-for="FinancialInfo" class="form-control" />
+        <span asp-validation-for="FinancialInfo" style="color:red"></span>
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">Register Securely</button>
+</form>
+
+<br />
+
+<a asp-controller="Account" asp-action="Users">View Stored Users</a>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

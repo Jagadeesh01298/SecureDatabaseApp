@@ -1,0 +1,46 @@
+﻿@model SecureDatabaseApp.Models.AppUser
+
+@{
+    ViewData["Title"] = "User Details";
+}
+
+<h2>User Security Details</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <td>@Model.Id</td>
+    </tr>
+
+    <tr>
+        <th>Full Name</th>
+        <td>@Model.FullName</td>
+    </tr>
+
+    <tr>
+        <th>Email</th>
+        <td>@Model.Email</td>
+    </tr>
+
+    <tr>
+        <th>Password Hash</th>
+        <td>@Model.PasswordHash</td>
+    </tr>
+
+    <tr>
+        <th>Encrypted Financial Info</th>
+        <td>@Model.EncryptedFinancialInfo</td>
+    </tr>
+
+    <tr>
+        <th>HMAC Status</th>
+        <td>@ViewBag.HmacStatus</td>
+    </tr>
+
+    <tr>
+        <th>Decrypted Financial Info</th>
+        <td>@ViewBag.DecryptedFinancialInfo</td>
+    </tr>
+</table>
+
+<a asp-controller="Account" asp-action="Users">Back to Users</a>

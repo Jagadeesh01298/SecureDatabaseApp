@@ -1,0 +1,42 @@
+﻿@model List<SecureDatabaseApp.Models.AppUser>
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<h2>Stored Users</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Password Hash</th>
+            <th>Encrypted Financial Info</th>
+            <th>HMAC</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.FullName</td>
+                <td>@user.Email</td>
+                <td>@user.PasswordHash</td>
+                <td>@user.EncryptedFinancialInfo</td>
+                <td>@user.FinancialInfoHmac</td>
+                <td>
+                    <a asp-controller="Account" asp-action="Details" asp-route-id="@user.Id">
+                        View Details
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Account" asp-action="Register">Back to Register</a>
